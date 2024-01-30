@@ -15,8 +15,7 @@ class TestClient(object):
             data = json.dumps(data)
         with self.app.test_request_context(url, method=method, data=data,
                                            headers=headers):
-            rv = self.app.preprocess_request()
-            if rv is None:
+            if (rv := self.app.preprocess_request()) is None:
                 rv = self.app.dispatch_request()
             rv = self.app.make_response(rv)
             rv = self.app.process_response(rv)
