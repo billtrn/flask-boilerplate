@@ -28,10 +28,12 @@ class TestClient(object):
     def post(self, url, data, headers=None):
         return self.send(url, 'POST', data, headers=headers)
 
-    def put(self, url, data, headers={}):
+    def put(self, url, data, headers=None):
+        headers = {} if headers is None else headers
         return self.send(url, 'PUT', data, headers=headers)
 
-    def delete(self, url, headers={}):
+    def delete(self, url, headers=None):
+        headers = {} if headers is None else headers
         return self.send(url, 'DELETE', headers=headers)
 
 
